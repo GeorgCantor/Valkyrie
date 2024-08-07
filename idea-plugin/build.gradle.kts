@@ -1,6 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.compose)
@@ -64,7 +61,7 @@ composeCompiler {
 intellijPlatform {
     buildSearchableOptions = false
     pluginConfiguration.ideaVersion {
-        sinceBuild = "241"
+        sinceBuild = "242"
         untilBuild = "242.*"
     }
     signing {
@@ -78,25 +75,18 @@ intellijPlatform {
     publishing.token = providers.environmentVariable("PUBLISH_TOKEN")
 }
 
-tasks {
-    run {
-        // workaround for https://youtrack.jetbrains.com/issue/IDEA-285839/Classpath-clash-when-using-coroutines-in-an-unbundled-IntelliJ-plugin
-        buildPlugin {
-            exclude { "coroutines" in it.name }
-            archiveFileName = "${rootProject.name}-$version.zip"
-        }
-        prepareSandbox {
-            exclude { "coroutines" in it.name }
-        }
-    }
-    withType<JavaCompile> {
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
-    }
+java {
+    // IDEA 2024.2 or above requires Java 21.
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
 
-    withType<KotlinCompile> {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_17
-        }
+tasks {
+    // workaround for https://youtrack.jetbrains.com/issue/IDEA-285839/Classpath-clash-when-using-coroutines-in-an-unbundled-IntelliJ-plugin
+    buildPlugin {
+        exclude { "coroutines" in it.name }
+        archiveFileName = "${rootProject.name}-$version.zip"
+    }
+    prepareSandbox {
+        exclude { "coroutines" in it.name }
     }
 }
