@@ -34,6 +34,11 @@ private class ValkyrieCommand :
         help = "The class name of the generated icon pack.",
         default = "Icons",
     )
+    private val nestedPackName by stringOption(
+        "--nested-pack-name",
+        help = "The class name of the generated nested icon pack.",
+        default = "",
+    )
     private val generatePreview by booleanOption(
         "--generate-preview",
         help = "Generate @Preview.",
@@ -50,6 +55,7 @@ private class ValkyrieCommand :
             outputPathString = outputPath,
             packageName = packageName,
             iconPackName = iconPackName,
+            nestedPackName = nestedPackName,
             generatePreview = generatePreview,
             outputFormat = outputFormat,
         )
