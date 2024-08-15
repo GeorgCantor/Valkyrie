@@ -48,7 +48,7 @@ tasks.shadowJar {
 }
 
 val r8File = layout.buildDirectory.file("libs/$baseName-$version-r8.jar").map { it.asFile }
-val rulesFile = project.file("src/main/rules.pro")
+val rulesFile = project.file("src/main/proguard-rules.pro")
 val r8Jar by tasks.registering(JavaExec::class) {
     dependsOn(tasks.shadowJar)
 
