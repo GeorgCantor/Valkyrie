@@ -68,4 +68,6 @@ internal fun res2iv(
             createParents = false,
         )
     }
+
+    outputInfo("Converting completed.")
 }
