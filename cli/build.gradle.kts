@@ -103,7 +103,7 @@ dependencies {
     implementation(projects.components.generator.iconpack)
     implementation(projects.components.generator.imagevector)
     implementation(projects.components.parser)
-    implementation(projects.components.psi.pack)
+    implementation(projects.components.psi.iconpack)
 
     implementation(libs.clikt)
     r8(libs.r8)
