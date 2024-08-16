@@ -111,6 +111,7 @@ dependencies {
     r8(libs.r8)
 
     testImplementation(projects.components.extensions)
+    testImplementation(projects.components.generator.imagevector)
     testImplementation(libs.bundles.test)
     testRuntimeOnly(libs.junit.launcher)
 }

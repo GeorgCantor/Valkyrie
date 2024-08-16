@@ -13,6 +13,8 @@ import kotlin.io.path.isDirectory
 import kotlin.io.path.isRegularFile
 import kotlin.io.path.listDirectoryEntries
 
+internal const val SUCCESS_MESSAGE = "Converting completed."
+
 /**
  * Converts SVG or XML files to ImageVector files.
  */
@@ -69,5 +71,5 @@ internal fun res2iv(
         )
     }
 
-    outputInfo("Converting completed.")
+    outputInfo(SUCCESS_MESSAGE)
 }
