@@ -5,19 +5,21 @@ plugins {
 }
 
 val baseName = "valkyrie"
+val versionName = rootProject.providers.gradleProperty("VERSION_NAME").get()
+version = versionName
 
 buildConfig {
-    buildConfigField("VERSION_NAME", version.toString())
+    buildConfigField("VERSION_NAME", versionName)
     packageName = "io.github.composegears.valkyrie"
 }
 
 tasks.withType<Jar>().configureEach {
     archiveBaseName = baseName
-    archiveVersion = version.toString()
+    archiveVersion = versionName
 
     manifest {
         attributes["Main-Class"] = "io.github.composegears.valkyrie.MainKt"
-        attributes["Implementation-Version"] = version.toString()
+        attributes["Implementation-Version"] = versionName
     }
 }
 
