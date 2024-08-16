@@ -1,4 +1,4 @@
-package io.github.composegears.valkyrie
+package io.github.composegears.valkyrie.cli
 
 import io.github.composegears.valkyrie.extensions.writeToKt
 import io.github.composegears.valkyrie.generator.imagevector.ImageVectorGenerator

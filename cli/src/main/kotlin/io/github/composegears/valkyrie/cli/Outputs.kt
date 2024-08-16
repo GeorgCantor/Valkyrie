@@ -1,4 +1,4 @@
-package io.github.composegears.valkyrie
+package io.github.composegears.valkyrie.cli
 
 import com.github.ajalt.mordant.rendering.TextColors
 import com.github.ajalt.mordant.terminal.Terminal

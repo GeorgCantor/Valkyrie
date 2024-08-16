@@ -10,7 +10,7 @@ version = versionName
 
 buildConfig {
     buildConfigField("VERSION_NAME", versionName)
-    packageName = "io.github.composegears.valkyrie"
+    packageName = "io.github.composegears.valkyrie.cli"
 }
 
 tasks.withType<Jar>().configureEach {
@@ -18,7 +18,7 @@ tasks.withType<Jar>().configureEach {
     archiveVersion = versionName
 
     manifest {
-        attributes["Main-Class"] = "io.github.composegears.valkyrie.MainKt"
+        attributes["Main-Class"] = "io.github.composegears.valkyrie.cli.MainKt"
         attributes["Implementation-Version"] = versionName
     }
 }
@@ -109,4 +109,8 @@ dependencies {
 
     implementation(libs.clikt)
     r8(libs.r8)
+
+    testImplementation(projects.components.extensions)
+    testImplementation(libs.bundles.test)
+    testRuntimeOnly(libs.junit.launcher)
 }

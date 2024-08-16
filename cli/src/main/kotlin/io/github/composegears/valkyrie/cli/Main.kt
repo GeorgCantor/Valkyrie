@@ -1,4 +1,4 @@
-package io.github.composegears.valkyrie
+package io.github.composegears.valkyrie.cli
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
